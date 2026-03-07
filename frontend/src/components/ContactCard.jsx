@@ -4,36 +4,7 @@ import { formatDate } from "../lib/utils";
 import api from "../lib/axios";
 import toast from "react-hot-toast";
 import { Pencil } from "lucide-react";
-import React, { useEffect, useState } from "react";
-import api from "./api";
 
-function ContactList() {
-  const [contacts, setContacts] = useState([]);
-
-  useEffect(() => {
-    api.get("/contacts")
-      .then((res) => {
-        setContacts(res.data);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
-  }, []);
-
-  return (
-    <div>
-      <h2>Contacts</h2>
-
-      {contacts.map((contact) => (
-        <div key={contact._id}>
-          <p>{contact.name}</p>
-          <p>{contact.email}</p>
-        </div>
-      ))}
-
-    </div>
-  );
-}
 
 const ContactCard = ({ contact, setContacts }) => {
 
